@@ -1,0 +1,254 @@
+/* ======= Base Styles ======= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background-color: #0b0e11;
+  color: #e6e6e6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+}
+
+/* ======= App Container ======= */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ======= Header ======= */
+.app-header {
+  background-color: #111417;
+  border-bottom: 1px solid #1e242a;
+  padding: 15px 25px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-header .brand h1 {
+  font-size: 1.4rem;
+  color: #00c896;
+  margin-bottom: 3px;
+}
+
+.app-header .subtitle {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+input,
+select,
+button {
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background-color: #1b1f24;
+  color: #e6e6e6;
+  outline: none;
+  transition: 0.2s;
+}
+
+input:focus,
+select:focus {
+  border-color: #00c896;
+}
+
+/* ======= Buttons ======= */
+.btn {
+  cursor: pointer;
+  border: none;
+  background-color: #222;
+  color: #e6e6e6;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #333;
+}
+
+.btn-primary {
+  background-color: #00c896;
+  color: #111;
+}
+
+.btn-primary:hover {
+  background-color: #00e6b3;
+}
+
+.btn-danger {
+  background-color: #e64a19;
+}
+
+.btn-danger:hover {
+  background-color: #ff6a3c;
+}
+
+/* ======= Main Content ======= */
+.app-main {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+  gap: 20px;
+}
+
+.dashboard,
+.logs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ======= Card Layout ======= */
+.card {
+  background-color: #14181d;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00000044;
+  padding: 15px 20px;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  color: #00c896;
+  margin-bottom: 10px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ======= Stats & Indicators ======= */
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stat {
+  flex: 1;
+  min-width: 90px;
+}
+
+.stat .label {
+  color: #aaa;
+  font-size: 0.8rem;
+}
+
+.stat .value {
+  font-weight: bold;
+  color: #00e6b3;
+  font-size: 1rem;
+}
+
+.small .value {
+  color: #e6e6e6;
+}
+
+.indicators {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.indicator {
+  display: flex;
+  justify-content: space-between;
+}
+
+.indicator-value {
+  color: #00e6b3;
+  font-weight: bold;
+}
+
+/* ======= Inputs ======= */
+.label-inline {
+  margin-right: 5px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.micro-config,
+.session-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.micro-config input,
+.session-row input {
+  width: 80px;
+  text-align: right;
+}
+
+/* ======= Logs & Tables ======= */
+.log-console {
+  background-color: #0f1317;
+  color: #00c896;
+  font-family: monospace;
+  height: 180px;
+  overflow-y: auto;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #222;
+}
+
+.positions-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.positions-table th,
+.positions-table td {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.positions-table th {
+  background-color: #1b1f24;
+  color: #00e6b3;
+}
+
+.positions-table tr:nth-child(even) {
+  background-color: #161a1f;
+}
+
+/* ======= Footer ======= */
+.app-footer {
+  background-color: #111417;
+  color: #777;
+  padding: 10px 20px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+/* ======= Responsive ======= */
+@media (max-width: 900px) {
+  .app-main {
+    grid-template-columns: 1fr;
+  }
+}

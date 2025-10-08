@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Deriv Micro-Margin Trading Bot</title>
+  <link rel="stylesheet" href="app.css" />
+  <!-- Optional: add a favicon or meta description -->
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="brand">
+        <h1>Deriv Micro-Margin Bot</h1>
+        <p class="subtitle">Browser-only | app_id = 1089 | Demo & Live ready</p>
+      </div>
+
+      <div class="controls">
+        <!-- Token input -->
+        <label for="tokenInput" class="sr-only">Deriv API Token</label>
+        <input id="tokenInput" type="password" placeholder="Enter Deriv API token" autocomplete="off" />
+
+        <!-- Mode (Demo / Live) -->
+        <select id="modeSelect" title="Mode">
+          <option value="demo">Demo</option>
+          <option value="real">Live</option>
+        </select>
+
+        <!-- Buttons -->
+        <button id="connectBtn" class="btn">Connect</button>
+        <button id="startBtn" class="btn btn-primary" disabled>Start Trading</button>
+        <button id="stopBtn" class="btn btn-danger" disabled>Stop Trading</button>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <section class="dashboard">
+        <div class="card">
+          <h2>Account</h2>
+          <div class="card-body">
+            <div class="stat-row">
+              <div class="stat">
+                <div class="label">Balance</div>
+                <div id="balanceDisplay" class="value">—</div>
+              </div>
+              <div class="stat">
+                <div class="label">Profit</div>
+                <div id="profitDisplay" class="value">—</div>
+              </div>
+              <div class="stat">
+                <div class="label">Loss</div>
+                <div id="lossDisplay" class="value">—</div>
+              </div>
+            </div>
+
+            <div class="stat-row small">
+              <div class="stat">
+                <div class="label">Last Tick</div>
+                <div id="lastTick" class="value">—</div>
+              </div>
+              <div class="stat">
+                <div class="label">Timeframe</div>
+                <div id="timeframeDisplay" class="value">tick</div>
+              </div>
+              <div class="stat">
+                <div class="label">Active Positions</div>
+                <div id="activePositions" class="value">0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Signals & Patterns</h2>
+          <div class="card-body">
+            <div class="indicators">
+              <div class="indicator">
+                <div class="label">Supply/Demand Momentum</div>
+                <div id="sdMomentum" class="indicator-value">—</div>
+              </div>
+              <div class="indicator">
+                <div class="label">Recognized Candle</div>
+                <div id="candlePattern" class="indicator-value">—</div>
+              </div>
+              <div class="indicator">
+                <div class="label">CRT Signal</div>
+                <div id="crtSignal" class="indicator-value">—</div>
+              </div>
+            </div>
+
+            <div class="micro-config">
+              <label class="label-inline">Min Stake (USD)</label>
+              <input id="minStake" type="number" min="0.0001" step="0.01" value="0.01" />
+              <label class="label-inline">Max Stake (USD)</label>
+              <input id="maxStake" type="number" min="0.01" step="0.01" value="5" />
+              <label class="label-inline">Martingale Cap</label>
+              <input id="martingaleCap" type="number" min="0" step="1" value="5" />
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Session</h2>
+          <div class="card-body">
+            <div class="session-row">
+              <div class="label">Session Profit Target</div>
+              <input id="sessionProfitTarget" type="number" step="0.01" value="1.00" />
+            </div>
+            <div class="session-row">
+              <div class="label">Session Max Drawdown</div>
+              <input id="sessionMaxDrawdown" type="number" step="0.01" value="2.00" />
+            </div>
+            <div class="session-row">
+              <div class="label">Per-trade SL proximity (%)</div>
+              <input id="slProximity" type="number" min="1" max="100" step="1" value="98" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="logs">
+        <div class="card">
+          <h2>Live Trade Log</h2>
+          <div class="card-body">
+            <div id="logConsole" class="log-console" aria-live="polite">
+              <!-- logs append here -->
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Open Positions</h2>
+          <div class="card-body">
+            <table id="positionsTable" class="positions-table">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Direction</th>
+                  <th>Stake (USD)</th>
+                  <th>Entry Price</th>
+                  <th>TP</th>
+                  <th>SL</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- positions rows populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <small>Use a Demo token for testing. Never paste live API tokens into untrusted pages.</small>
+    </footer>
+  </div>
+
+  <!-- Main script -->
+  <script src="app.js" defer></script>
+</body>
+</html>
